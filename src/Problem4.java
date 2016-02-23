@@ -3,6 +3,7 @@
  */
 public class Problem4 {
     public double findMedianSortedArrays(int[] nums1, int start1, int[] nums2, int start2, int k) {
+        //get the kth item in two arrays with starting position start1 and start2
         if (nums1.length - start1 > nums2.length - start2) {
             return findMedianSortedArrays(nums2, start2, nums1, start1, k);
         }
@@ -10,6 +11,7 @@ public class Problem4 {
         if (k == 1) return Math.min(nums1[start1], nums2[start2]);
         int i = Math.min(nums1.length - start1, k / 2);
         int j = Math.min(nums2.length - start2, k / 2);
+        //we can throw away part of the array
         if (nums1[start1 + i - 1] < nums2[start2 + j - 1])
             return findMedianSortedArrays(nums1, start1 + i, nums2, start2, k - i);
         else return findMedianSortedArrays(nums1, start1, nums2, start2 + j, k - j);
