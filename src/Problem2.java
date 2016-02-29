@@ -2,14 +2,6 @@
  * Created by admin on 2/18/16.
  */
 public class Problem2 {
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode node = null;
