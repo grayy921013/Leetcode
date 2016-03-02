@@ -21,7 +21,7 @@ public class Problem31 {
         // only do this when nextpermutation(nums, anchor + 1) == false
         // therefore list after anchor is in descending order
         if (anchor == nums.length - 1) return false;
-        int pos = binarysearch(nums, anchor + 1, nums.length - 1, nums[anchor]);
+        int pos = binarySearch(nums, anchor + 1, nums.length - 1, nums[anchor]);
         if (pos == -1) return false;
         else {
             int temp = nums[pos];
@@ -37,14 +37,14 @@ public class Problem31 {
         return true;
     }
 
-    private int binarysearch(int[] nums, int start, int end, int value) {
+    private int binarySearch(int[] nums, int start, int end, int value) {
         //find the smallest entry in nums > value
         if (nums[start] <= value) return -1;
         if (start == end) return start;
         int mid = (start + end) / 2;
         if (nums[mid] > value && nums[mid + 1] <= value) return mid;
-        else if (nums[mid + 1] > value) return binarysearch(nums, mid + 1, end, value);
-        else return binarysearch(nums, start, mid, value);
+        else if (nums[mid + 1] > value) return binarySearch(nums, mid + 1, end, value);
+        else return binarySearch(nums, start, mid, value);
     }
 
     public static void main(String[] args) {
