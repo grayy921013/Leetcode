@@ -5,27 +5,29 @@ public class Problem44 {
     //    '?' Matches any single character.
 //    '*' Matches any sequence of characters (including the empty sequence).
     public boolean isMatch(String s, String p) {
-        //use dp instead of dfs
-        int m = s.length(), n = p.length();
-        boolean[][] match = new boolean[m + 1][n + 1];
-        //entry i,j denotes whether p[0..j-1] can match s[0..i-1]
-        match[0][0] = true;
-        //entry 0,j is true if all characters in p before index j is '*'
-        //all entry i,0 for i > 1 is false
-        for (int j = 1; j <= n; j++) {
-            if (p.charAt(j - 1) == '*') match[0][j] = true;
-            else break;
+        int sIndex = 0, pIndex = 0, starIndex = -1, match = 0;
+        while (sIndex < s.length()) {
+            if (pIndex < p.length() && (p.charAt(pIndex) == '?' || p.charAt(pIndex) == s.charAt(sIndex))) {
+                pIndex++;
+                sIndex++;
+            } else if (pIndex < p.length() && p.charAt(pIndex) == '*') {
+                //we remember the index of last star and last match
+                starIndex = pIndex;
+                match = sIndex;
+                //then we only increment pIndex
+                pIndex++;
+            } else if (starIndex != -1) {
+                //go back to last matching point
+                //try to match one more digit in s
+                pIndex = starIndex + 1;
+                match++;
+                sIndex = match;
+            } else return false;
         }
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <=n; j++) {
-                if (p.charAt(j - 1) != '*') {
-                    match[i][j] = (match[i - 1][j - 1] && (p.charAt(j - 1) == s.charAt(i - 1) || p.charAt(j - 1) == '?'));
-                } else {
-                    match[i][j] = match[i - 1][j] || match[i][j - 1];
-                }
-            }
+        for (; pIndex < p.length(); pIndex++) {
+            if (p.charAt(pIndex) != '*') return false;
         }
-        return match[m][n];
+        return true;
     }
 
     public static void main(String[] args) {
