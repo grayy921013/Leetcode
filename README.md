@@ -10,7 +10,12 @@
   2.  When p.charAt(j - 1) == '*'
     match[i][j] = match[i - 1][j] || match[i][j - 1];  
 
-  Actually we can use 1-D array to save the memory comsumption.  
-  
+  Actually we can use 1-D array to save the memory consumption.  
+
   ###Method 2:
-  A simpler method, check the code.
+  A simpler method, check the code.  
+
+2.  Problem 46&47 (Permutation)  
+Given a collection of distinct numbers, return all possible permutations. The problem is not difficult, but I use a tricky method to resolve duplication.  
+The general idea is to insert item recursively.   Given array [2, 3], we insert items one by one in every possible positions. Firstly, we get [2]. When inserting "3", there are two positions to choose, so we simply replicate the list and get [2, 3] and [3, 2].  
+The tricky part is what if the array contains duplicate values. The solution is to only insert value v at the left(right should also work) of existing v entries.  
