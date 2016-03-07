@@ -57,7 +57,7 @@ public class Problem56 {
     }
 
     private int search(List<Interval> list, int value) {
-        //if intersect with interval i, then return 2i + 1, if between i - 1 and i, return 2i
+        //if intersect with interval i, then return 2i + 1, if between i - 1 and i, return 2i + 2
         int start = 0, end = list.size() - 1;
         while (start <= end) {
             int mid = (start + end) / 2;
