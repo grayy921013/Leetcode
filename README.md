@@ -25,6 +25,7 @@
   I first came up with a *silly* method, which finally appeared to be faster than most of the *clean* solutions.  
   ### My Initial Method:  
   Insert intervals into the list one by one without sorting. For a new interval, call search() method with both the starting point and the ending point, which binary searches for a certain integer value in the existing list. If the value overlaps with the interval at index i, the function returns 2i + 1; if the value lies between interval i and interval i + 1, the function returns 2i + 2. After searching, construct and insert the new interval after removing overlaps.  
+  *This method can be directly used in Problem57 !*
 
   ### Clean Method:  
   Sort the input array according to the start value, and then insert one by one. Remember the ongoing bound and compare with the next interval.
