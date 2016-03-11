@@ -39,3 +39,12 @@
 5. Problem 76 (Minimum Window Substring)  
   Basic idea: use two pointer start and end. First, increase end to make the window contain all the characters needed. Then, increase start to remove unnecessary characters to make the window a local minimum.  
   *Note: use array instead of HashMap to count can save a lot of time, as we only have 256 characters*
+
+6. Problem 84 (Largest Rectangle in Histogram)  
+  Use a stack to maintain the bar indexes, and ensure that height of the bar in the stack are in non-descending order so that we can calculate the area easily. When the new "arriving" bar is larger or equal to the peek, we just push is index into the stack; otherwise, we keep popping the stack until we can push the new bar into the stack. Whenever we pop a bar, we calculate the area of rectangle with the height of this bar.  
+  ```java
+   tp = s.pop();
+   area = height[tp] * (s.isEmpty() ? i : i - 1 - s.peek());
+  ```
+  **Solution for this problem can be reused in the Problem 85**  
+  We can apply the algorithm for each row.

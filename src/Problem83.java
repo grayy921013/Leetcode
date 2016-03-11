@@ -13,7 +13,7 @@ public class Problem83 {
                 cursor = now;
                 prev = now.val;
             }
-            now = now.next
+            now = now.next;
         }
         cursor.next = null;
         return head;
