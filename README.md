@@ -48,3 +48,23 @@
   ```
   **Solution for this problem can be reused in the Problem 85**  
   We can apply the algorithm for each row.
+
+7. Problem 87 (Scramble String)
+  Intuition: If s2 is a scrambled string of s1, there must exist two cut points in s1 and s2, which divide s1 into s11 and s12, s2 into s21 and s22, such that s11 is a scrambled string of s21, and s12 is a scrambled string of s22.  
+  Basic idea: We loop s1 from head to tail, and cut it into two parts, and for s2, we loop it from head to tail and tail to head at the same time.
+  ```java
+  for (int i = 1; i < length; i++) {
+              String part1 = s1.substring(0, i);
+              String part2 = s1.substring(i);
+              String part3 = s2.substring(0, i);
+              String part4 = s2.substring(i);
+              String part5 = s2.substring(length - i);
+              String part6 = s2.substring(0, length - i);
+  }
+  ```
+  And then we have to check if (part1, part3) and (part2, part4) are both scrambled pairs (Or (part1, part5) and (part2, part6)), so we do the checking recursively. At this stage, we can prune quite a lot path because s1 cannot be a scrambled string of s2 if they contain different character sets. And here comes three checking method:  
+  **Method1** We just sort s1 and s2, and then compare them. (slow but reliable)  
+
+  ***If only alphabets exist in s1 and s2:***  
+  **Method2** We can use an array with length of 26 to mark the appearance of all characters. (fast)  
+  **Method3** We use 26 prime number to represent each character, and only need to check their product. (very fast, but the product may overflow)
