@@ -68,3 +68,28 @@
   ***If only alphabets exist in s1 and s2:***  
   **Method2** We can use an array with length of 26 to mark the appearance of all characters. (fast)  
   **Method3** We use 26 prime number to represent each character, and only need to check their product. (very fast, but the product may overflow)
+
+8. Problem 88 (Merge Sorted Array)  
+  In order to merge two arrays in place, we can proceed them from tail to head.  
+
+9. Problem 91 (Decode Ways)  
+  We can use similar bottom-up method used to solve fibonacci problem. Firstly, we initialize result 0 and result1.  
+  ```java
+  int result1 = s.charAt(index + 1) == '0' ? 0 : 1;
+  int result0 = 1;
+  ```
+  Then, we loop the string from tail to head, and compute the result based on previous result and the previous of previous result. There exist three conditions:  
+  ```java
+  while (index >= 0) {
+            if (s.charAt(index) == '0') {
+                result0 = result1;
+                result1 = 0;
+            } else if (s.charAt(index) > '0' && s.charAt(index) < '2' || s.charAt(index) == '2' && s.charAt(index + 1) <= '6') {
+                result1 = result0 + result1;
+                result0 = result1 - result0;
+            } else {
+                result0 = result1;
+            }
+            index--;
+  }
+  ```

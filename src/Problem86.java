@@ -1,7 +1,7 @@
 /**
  * Created by Zhehui Zhou on 3/15/16.
  */
-public class Program86 {
+public class Problem86 {
     public ListNode partition(ListNode head, int x) {
         ListNode[] part = new ListNode[2];
         ListNode[] partHead = new ListNode[2];
@@ -24,6 +24,6 @@ public class Program86 {
     public static void main(String[] args) {
         ListNode node = new ListNode(2);
         node.next = new ListNode(1);
-        System.out.println(new Program86().partition(node, 2));
+        System.out.println(new Problem86().partition(node, 2));
     }
 }
