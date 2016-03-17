@@ -93,3 +93,7 @@
             index--;
   }
   ```
+
+10. Problem 95&96 (Unique Binary Search Trees)  
+  We can construct the result of n nodes using the result of 1 to n - 1 nodes. If the left subtree has i nodes, then the right subtree with have (n - 1 - i) nodes, and the root node will have value (i + 1). Then, the left subtree actually can be constructed directly by cloning the result of i nodes, while for the right subtree, we have to clone the result of (n - 1 - i) while add each node with value (k + 1) because the smallest value in the right subtree is (k + 2) instead of 1.  
+  Then, we can use bottom-up method to solve the problem starting with 0 node to n nodes.
