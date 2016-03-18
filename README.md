@@ -96,4 +96,9 @@
 
 10. Problem 95&96 (Unique Binary Search Trees)  
   We can construct the result of n nodes using the result of 1 to n - 1 nodes. If the left subtree has i nodes, then the right subtree with have (n - 1 - i) nodes, and the root node will have value (i + 1). Then, the left subtree actually can be constructed directly by cloning the result of i nodes, while for the right subtree, we have to clone the result of (n - 1 - i) while add each node with value (k + 1) because the smallest value in the right subtree is (k + 2) instead of 1.  
-  Then, we can use bottom-up method to solve the problem starting with 0 node to n nodes.
+  Then, we can use bottom-up method to solve the problem starting with 0 node to n nodes.  
+
+11. Problem 105&106 (Construct Binary Tree from Preorder/Postorder and Inorder Traversal My Submissions Question
+)  
+  preoder[0] must be the root node. Then in inorder array, we can find inorder[i] == preorder[0], which implies that inorder[0..i] must be in the left subtree while inorder[i..end] must be in the right subtree. We do this operation recursively and will get the whole tree.  
+  For problem 106, the idea is basically the same, but we have to loop postorder from the tail to the end.
