@@ -101,4 +101,18 @@
 11. Problem 105&106 (Construct Binary Tree from Preorder/Postorder and Inorder Traversal My Submissions Question
 )  
   preoder[0] must be the root node. Then in inorder array, we can find inorder[i] == preorder[0], which implies that inorder[0..i] must be in the left subtree while inorder[i..end] must be in the right subtree. We do this operation recursively and will get the whole tree.  
-  For problem 106, the idea is basically the same, but we have to loop postorder from the tail to the end.
+  For problem 106, the idea is basically the same, but we have to loop postorder from the tail to the end.  
+
+12. Problem 115 (Distinct Subsequences)  
+  **DP can always be used to solve this kind of problem, as the solution to the whole problem depends on the solution of subproblems**  
+  We can use a matrix `match[][]` to denote the number of subsequences. Use `match[i][j]` denotes the number of subsequences of T[0..i] in S[0..j] and the result will be in `match[t.length()][s.length()]`.  
+  Initialization: `match[0][k] = 0` for any k because any T have one and only one empty subsequence.  
+  Recurrence: If the current character of t is not the same as the current character of s, then the entry of `match` has the same value with the shorter s. Otherwise, we have got `match[i][j]` more subsequences.  
+  ```java
+  if(t.charAt(i) == s.charAt(j)) {
+      match[i + 1][j + 1] = match[i][j] + match[i + 1][j];
+  } else {
+      match[i + 1][j + 1] = match[i + 1][j];
+  }
+  ```  
+  As usual, we can optimize the memory space by using 1D array.
