@@ -115,4 +115,10 @@
       match[i + 1][j + 1] = match[i + 1][j];
   }
   ```  
-  As usual, we can optimize the memory space by using 1D array.
+  As usual, we can optimize the memory space by using 1D array.  
+
+13. Problem 126&127 (Word Ladder)  
+  Intuition: The one-character transformation is like an edge, and all the words are vertexes, so we can transform the original problem into a graph problem and use BFS to solve it. However, as we only need to compute the shortest path, we actually do not need to construct a real graph explicitly. We can remember all the vertexes we have already visited and the vertex set which contain all the nodes with minimum distance `i` to the root, then we are able to find all the nodes with minimum distance `i + 1`.  
+  Difficulty: I did not find a simpler method to find all one-character distance word of a certain given word, so I used a brute force method: try `a - z` on every position and check if the result is in the wordlist and has not yet been visited. I previously thought this would not work, but it turns out to be acceptable. **So do not give up before really implement it.**    
+  Optimization: Actually we can start the search from both ends. We can maintain two sets, `begin` and `end`. For each round, we always start searching from the smaller set.  
+  The detail solution for problem126 is not clear nor straightforward. Basic idea is to use a map to remember all shortest paths to a certain word and also mark down visited words.
