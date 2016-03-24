@@ -122,3 +122,26 @@
   Difficulty: I did not find a simpler method to find all one-character distance word of a certain given word, so I used a brute force method: try `a - z` on every position and check if the result is in the wordlist and has not yet been visited. I previously thought this would not work, but it turns out to be acceptable. **So do not give up before really implement it.**    
   Optimization: Actually we can start the search from both ends. We can maintain two sets, `begin` and `end`. For each round, we always start searching from the smaller set.  
   The detail solution for problem126 is not clear nor straightforward. Basic idea is to use a map to remember all shortest paths to a certain word and also mark down visited words.
+
+14. Problem 132 (Palindrome Partitioning II)  
+  Basic idea:  
+  * If `s[i] = s[j]` and s[i+1..j-1] is a palindrome, then s[i..j] is also a palindrome.
+  * If s[i..j] is a palindrome, cut needed for s[0..j] is at most cut used for s[0..i] + 1.  
+
+  For every index i, we try to find the minimum cut for s[0..i]. So we use an inner loop for index j to find out whether s[j..i] is a palindrome and use a 2D array to memorize the result, if yes then we know that s[i] is at most s[j] + 1.  
+  ```java  
+  boolean[][] pad = new boolean[s.length()][s.length()];
+  int[] cut = new int[s.length()];
+  for(int i = 0; i < s.length(); i++) {  
+    int min = i;
+    for(int j = 0; j <= i; j++) {
+      if (s.charAt(i) == s.charAt(j) && (j + 1 > i - 1 || pad[j + 1][i - 1])) {
+        pad[j][i] = true;
+        min = Math.min(j == 0 ? 0 : cut[j - 1] + 1, min);
+      }
+    }
+    cut[i] = min;
+  }
+  return cut[cut.length - 1];
+  ```  
+  Alternatives: We can actually save the space for marking down whether s[i..j] is a palindrome by moving left and right simultaneously from a center point(see problem5).  
