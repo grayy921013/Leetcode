@@ -145,3 +145,6 @@
   return cut[cut.length - 1];
   ```  
   Alternatives: We can actually save the space for marking down whether s[i..j] is a palindrome by moving left and right simultaneously from a center point(see problem5).  
+
+15. Problem 136 (Single Number)  
+  Use XOR because `0 ^ a = a` and `a ^ a = 0`.
