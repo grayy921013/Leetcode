@@ -146,5 +146,17 @@
   ```  
   Alternatives: We can actually save the space for marking down whether s[i..j] is a palindrome by moving left and right simultaneously from a center point(see problem5).  
 
-15. Problem 136 (Single Number)  
-  Use XOR because `0 ^ a = a` and `a ^ a = 0`.
+15. Problem 136&137 (Single Number)  
+  Use XOR because `0 ^ a = a` and `a ^ a = 0`.  
+  For 137, we maintain two variable ones and twos, which represents whether '1' on corresponding bits have appeared for one time or two times. So if for a certain bit, both ones and twos are equal to 1, then that bit has appear for three times and we set both to 0.  
+  ```java
+  twos |= (ones & a);
+  ones ^= a; // same as problem 136
+  int three = ~(ones & twos);
+  ones &= three;
+  twos &= three;
+  ```  
+  Finally, just return ones as the result.  
+
+16. Problem 142 (Linked List Cycle II)  
+  First, use the *fast slow pointer* to determine if the list contains a cycle. Then we get a meeting point. Assume the distance between the head and the cycle start is d1, the distance between the cycle start and the meeting point is d2, while the length of the cycle is c. We know that slow pointer has run `d1 + d2 + n1 * c`, and the fast pointer has run `d1 + d2 + n2 * c`. Therefore, `d1 + d2 + n2 * c = 2 * (d1 + d2 + n1 * c)`, which leads to `d1 = (n1 - 2 * n2) * c - d2 = (n - 1) * c + c - d2, (n >= 1)`. If we put one small pointer at the head, one at the meeting point, they will finally meet at the cycle start.
