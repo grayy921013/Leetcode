@@ -1,11 +1,46 @@
+import java.util.List;
+
 /**
  * Created by Zhehui Zhou on 3/28/16.
  */
 public class Problem148 {
     public ListNode sortList(ListNode head) {
-        return quickSortList(head)[0];
+//        return quickSortList(head)[0];
+        return mergeSort(head);
     }
 
+    private ListNode mergeSort(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode next = slow.next;
+        slow.next = null;
+        ListNode l1 = mergeSort(head);
+        ListNode l2 = mergeSort(next);
+        return merge(l1, l2);
+    }
+
+    private ListNode merge(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode cursor = dummy;
+        while(l1 != null & l2 != null) {
+            if (l1.val < l2.val) {
+                cursor.next = l1;
+                l1 = l1.next;
+            } else {
+                cursor.next = l2;
+                l2 = l2.next;
+            }
+            cursor = cursor.next;
+        }
+        if (l1 != null) cursor.next = l1;
+        if (l2 != null) cursor.next = l2;
+        return dummy.next;
+    }
     private ListNode[] quickSortList(ListNode head) {
         if (head == null) return new ListNode[]{head, head};
         ListNode pivot = head;
