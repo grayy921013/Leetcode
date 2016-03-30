@@ -1,9 +1,9 @@
 /**
  * Created by Zhehui Zhou on 3/30/16.
  */
-public class Problem153 {
+public class Problem154 {
     public int findMin(int[] nums) {
-        return findMin(nums, 0, nums.length - 1);
+        return findMin(nums, 0 , nums.length - 1);
     }
 
     private int findMin(int[] nums, int start, int end) {
@@ -12,12 +12,12 @@ public class Problem153 {
         int min = nums[mid];
         if (nums[start] < nums[mid]) {
             min = Math.min(min, nums[start]);
-        } else if (start < mid) {
+        } else {
             min = Math.min(min, findMin(nums, start, mid - 1));
         }
-        if (nums[mid] < nums[end]) {
+        if (nums[mid] <= nums[end]) {
             min = Math.min(min, nums[start]);
-        } else if (end > mid) {
+        } else {
             min = Math.min(min, findMin(nums, mid + 1, end));
         }
         return min;

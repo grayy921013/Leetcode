@@ -159,4 +159,29 @@
   Finally, just return ones as the result.  
 
 16. Problem 142 (Linked List Cycle II)  
-  First, use the *fast slow pointer* to determine if the list contains a cycle. Then we get a meeting point. Assume the distance between the head and the cycle start is d1, the distance between the cycle start and the meeting point is d2, while the length of the cycle is c. We know that slow pointer has run `d1 + d2 + n1 * c`, and the fast pointer has run `d1 + d2 + n2 * c`. Therefore, `d1 + d2 + n2 * c = 2 * (d1 + d2 + n1 * c)`, which leads to `d1 = (n1 - 2 * n2) * c - d2 = (n - 1) * c + c - d2, (n >= 1)`. If we put one small pointer at the head, one at the meeting point, they will finally meet at the cycle start.
+  First, use the *fast slow pointer* to determine if the list contains a cycle. Then we get a meeting point. Assume the distance between the head and the cycle start is d1, the distance between the cycle start and the meeting point is d2, while the length of the cycle is c. We know that slow pointer has run `d1 + d2 + n1 * c`, and the fast pointer has run `d1 + d2 + n2 * c`. Therefore, `d1 + d2 + n2 * c = 2 * (d1 + d2 + n1 * c)`, which leads to `d1 = (n1 - 2 * n2) * c - d2 = (n - 1) * c + c - d2, (n >= 1)`. If we put one small pointer at the head, one at the meeting point, they will finally meet at the cycle start.  
+
+17. Problem 155 (Min Stack)  
+  It is trivial to maintain the min value. The main challenge is how to *update* the min value if we pop a item equal to the current min value. The trick is to something more in `push()`: if the item is less or equal to the current min value, we push the current min value into the stack before we push the actual value. What we want to do is actually to maintain the min value of items *under* the latest item. Therefore, when we pop an item that is equal to the current min value, we just pop one more item to update the min value.  
+  ```java
+  public void push(int x) {
+        if (x <= min) {
+            stack.push(min);
+            min = x;
+        }
+        stack.push(x);
+    }
+
+    public void pop() {
+        int val = stack.pop();
+        if (val == min) min = stack.pop();
+        if (stack.isEmpty()) min = Integer.MAX_VALUE;
+    }
+  ```  
+
+18. Problem 164 (Maximum Gap)  
+  In order to achieve *linear time/space* algorithm, you have to try something special, bucket sort. First, I find the `max` and `min` value of the whole array, and use it to divide the array into `length - 1` buckets. As the max gap must be larger than `(max - min) / (length) - 1`, the max gap must happen between two buckets but not with in a single bucket.  
+  ```java
+  int gap = (int)Math.ceil((double)(max - min) / (nums.length - 1));
+  ```
+  Then we mark the `min` and `max` value of each bucket. At last, we loop through all the buckets to calculate the max gap value.
