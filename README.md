@@ -49,7 +49,7 @@
   **Solution for this problem can be reused in the Problem 85**  
   We can apply the algorithm for each row.
 
-7. Problem 87 (Scramble String)
+7. Problem 87 (Scramble String)  
   Intuition: If s2 is a scrambled string of s1, there must exist two cut points in s1 and s2, which divide s1 into s11 and s12, s2 into s21 and s22, such that s11 is a scrambled string of s21, and s12 is a scrambled string of s22.  
   Basic idea: We loop s1 from head to tail, and cut it into two parts, and for s2, we loop it from head to tail and tail to head at the same time.
   ```java
