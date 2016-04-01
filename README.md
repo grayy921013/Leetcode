@@ -184,4 +184,9 @@
   ```java
   int gap = (int)Math.ceil((double)(max - min) / (nums.length - 1));
   ```
-  Then we mark the `min` and `max` value of each bucket. At last, we loop through all the buckets to calculate the max gap value.
+  Then we mark the `min` and `max` value of each bucket. At last, we loop through all the buckets to calculate the max gap value.  
+
+19. Problem 174 (Dungeon Game)  
+  It is a typical DP problem. The idea is that when the knight reaches a cell, he should have at least 1 health. We use a 2D array `health[][]`.  
+  * `health[col-1][row-1] = 1;`
+  * `health[i][j] = Math.max(Math.min(health[i][j+1],health[i-1][j]) - dungeon[i][j], 1);`
