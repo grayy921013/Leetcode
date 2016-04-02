@@ -4,7 +4,7 @@ import java.util.Comparator;
 /**
  * Created by Zhehui Zhou on 4/1/16.
  */
-public class Problem175 {
+public class Problem179 {
     public String largestNumber(int[] nums) {
         String[] strings = new String[nums.length];
         for(int i = 0; i < nums.length; i++) {
@@ -25,6 +25,6 @@ public class Problem175 {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Problem175().largestNumber(new int[]{12, 121}));
+        System.out.println(new Problem179().largestNumber(new int[]{12, 121}));
     }
 }

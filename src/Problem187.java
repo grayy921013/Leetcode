@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Zhehui Zhou on 4/1/16.
  */
-public class Problem176 {
+public class Problem187 {
     private int charToNum(char c) {
         switch (c) {
             case 'A':
