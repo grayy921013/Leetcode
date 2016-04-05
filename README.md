@@ -189,4 +189,7 @@
 19. Problem 174 (Dungeon Game)  
   It is a typical DP problem. The idea is that when the knight reaches a cell, he should have at least 1 health. We use a 2D array `health[][]`.  
   * `health[col-1][row-1] = 1;`
-  * `health[i][j] = Math.max(Math.min(health[i][j+1],health[i-1][j]) - dungeon[i][j], 1);`
+  * `health[i][j] = Math.max(Math.min(health[i][j+1],health[i-1][j]) - dungeon[i][j], 1);`  
+
+20. Problem 218 (The Skyline Problem)  
+  Main idea is divide & conquer. The first mission is to write a function that can *combine* two skylines. Then we transform each individual building into a skyline. Finally, we recursively combine two skylines into one. Refer to my code for details.
