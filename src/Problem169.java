@@ -3,15 +3,16 @@
  */
 public class Problem169 {
     public int majorityElement(int[] nums) {
-        int length = nums.length;
-        while(length > 1) {
-            int newLength = 0;
-            for(int i = 0; i < length; i+=2) {
-                if(i + 1 >= length || nums[i] == nums[i + 1]) nums[newLength++] = nums[i];
-            }
-            length = newLength;
+        int major = 0;
+        int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            if (count == 0) {
+                major = nums[i];
+                count++;
+            } else if (nums[i] == major) count++;
+            else count--;
         }
-        return nums[0];
+        return major;
     }
 
 }

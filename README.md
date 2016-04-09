@@ -196,4 +196,7 @@
 
 21. Problem 222 (Count Complete Tree Nodes)  
   At first, I thought of binary search, which take `log(2^h) = h` steps to find the number of nodes in the last level, but for each level, I have to go down `h` levels to find the node. So the overall time complexity is `O(n^2)`, which is too slow.  
-  A better solution is to compare the *height* of the left and right subtree. Here, we calculate the height by always going left from the start node. If the height of the left subtree is equal to the height of the right subtree, then the left subtree is a full tree of height `h - 1`, and the result is `2 ^ h + no. of nodes in the right subtree`. Else, the right subtree is a full tree of heigh `h -  2`, and the result is `2 ^ (h - 1) + no. of nodes in the left subtree`. We do the calculation recursively.
+  A better solution is to compare the *height* of the left and right subtree. Here, we calculate the height by always going left from the start node. If the height of the left subtree is equal to the height of the right subtree, then the left subtree is a full tree of height `h - 1`, and the result is `2 ^ h + no. of nodes in the right subtree`. Else, the right subtree is a full tree of heigh `h -  2`, and the result is `2 ^ (h - 1) + no. of nodes in the left subtree`. We do the calculation recursively.  
+
+22. Problem 231 (Power of Two)  
+  When n is power of 2, n & (n - 1) is 0.
