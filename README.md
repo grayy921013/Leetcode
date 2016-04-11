@@ -199,4 +199,8 @@
   A better solution is to compare the *height* of the left and right subtree. Here, we calculate the height by always going left from the start node. If the height of the left subtree is equal to the height of the right subtree, then the left subtree is a full tree of height `h - 1`, and the result is `2 ^ h + no. of nodes in the right subtree`. Else, the right subtree is a full tree of heigh `h -  2`, and the result is `2 ^ (h - 1) + no. of nodes in the left subtree`. We do the calculation recursively.  
 
 22. Problem 231 (Power of Two)  
-  When n is power of 2, n & (n - 1) is 0.
+  When n is power of 2, n & (n - 1) is 0.  
+
+23. Problem 240 (Search a 2D Matrix II)  
+  The first idea I come up with is to search the matrix row by row, col by col from the top left col, and set the max col number to search to `j` when `matrix[i][j] > target`. However, this solution will take worst time complexity `O(n^2)` when the target is at the bottom right corner.  
+  A more clever solution is to start the search from the top right corner. When `matrix[i][j] < target`, we increment `j`; when `matrix[i][j] > target`, we reduce `i`.
