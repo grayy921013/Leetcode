@@ -203,4 +203,7 @@
 
 23. Problem 240 (Search a 2D Matrix II)  
   The first idea I come up with is to search the matrix row by row, col by col from the top left col, and set the max col number to search to `j` when `matrix[i][j] > target`. However, this solution will take worst time complexity `O(n^2)` when the target is at the bottom right corner.  
-  A more clever solution is to start the search from the top right corner. When `matrix[i][j] < target`, we increment `j`; when `matrix[i][j] > target`, we reduce `i`.
+  A more clever solution is to start the search from the top right corner. When `matrix[i][j] < target`, we increment `j`; when `matrix[i][j] > target`, we reduce `i`.  
+
+24. Problem 260 (Single Number III)  
+  It is nature to use XOR. However, this time we have two single numbers, so we need two passes. For the first pass, we just XOR all the elements and what we will get is `a ^ b`. Then how to split the two numbers? It is easy to notice that a and b must be different on more than one bits. Therefore, we can choose one bit and divide the numbers into two groups so as to compute `a` and `b` separately.
