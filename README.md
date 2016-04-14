@@ -196,7 +196,7 @@
 
 21. Problem 222 (Count Complete Tree Nodes)  
   At first, I thought of binary search, which take `log(2^h) = h` steps to find the number of nodes in the last level, but for each level, I have to go down `h` levels to find the node. So the overall time complexity is `O(n^2)`, which is too slow.  
-  A better solution is to compare the *height* of the left and right subtree. Here, we calculate the height by always going left from the start node. If the height of the left subtree is equal to the height of the right subtree, then the left subtree is a full tree of height `h - 1`, and the result is `2 ^ h + no. of nodes in the right subtree`. Else, the right subtree is a full tree of heigh `h -  2`, and the result is `2 ^ (h - 1) + no. of nodes in the left subtree`. We do the calculation recursively.  
+  A better solution is to compare the *height* of the left and right subtree. Here, we calculate the height by always going left from the start node. If the height of the left subtree is equal to the height of the right subtree, then the left subtree is a full tree of height `h - 1`, and the result is `2 ^ h + no. of nodes in the right subtree`. Else, the right subtree is a full tree of heigh `h -  2`, and the result is `2 ^ (h - 1) + no. of nodes in the left subtree`. We do the calculation recursively.m  
 
 22. Problem 231 (Power of Two)  
   When n is power of 2, n & (n - 1) is 0.  
@@ -206,4 +206,7 @@
   A more clever solution is to start the search from the top right corner. When `matrix[i][j] < target`, we increment `j`; when `matrix[i][j] > target`, we reduce `i`.  
 
 24. Problem 260 (Single Number III)  
-  It is nature to use XOR. However, this time we have two single numbers, so we need two passes. For the first pass, we just XOR all the elements and what we will get is `a ^ b`. Then how to split the two numbers? It is easy to notice that a and b must be different on more than one bits. Therefore, we can choose one bit and divide the numbers into two groups so as to compute `a` and `b` separately.
+  It is nature to use XOR. However, this time we have two single numbers, so we need two passes. For the first pass, we just XOR all the elements and what we will get is `a ^ b`. Then how to split the two numbers? It is easy to notice that a and b must be different on more than one bits. Therefore, we can choose one bit and divide the numbers into two groups so as to compute `a` and `b` separately.  
+
+25. Problem 287 (Find the Duplicate Number)  
+  The trivial solution is binary search, which takes `O(nlogn)` time. However, there exists a brilliant solution which only takes linear time. We simply regard the array as a linked list. `array[i] = j` means the next node of node i is node j. Then it is trivial to note that the duplicate number is actually the entry point of the cycle. Therefore, this problem is actually equivalent to Problem 142.
