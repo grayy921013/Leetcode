@@ -209,4 +209,13 @@
   It is nature to use XOR. However, this time we have two single numbers, so we need two passes. For the first pass, we just XOR all the elements and what we will get is `a ^ b`. Then how to split the two numbers? It is easy to notice that a and b must be different on more than one bits. Therefore, we can choose one bit and divide the numbers into two groups so as to compute `a` and `b` separately.  
 
 25. Problem 287 (Find the Duplicate Number)  
-  The trivial solution is binary search, which takes `O(nlogn)` time. However, there exists a brilliant solution which only takes linear time. We simply regard the array as a linked list. `array[i] = j` means the next node of node i is node j. Then it is trivial to note that the duplicate number is actually the entry point of the cycle. Therefore, this problem is actually equivalent to Problem 142.
+  The trivial solution is binary search, which takes `O(nlogn)` time. However, there exists a brilliant solution which only takes linear time. We simply regard the array as a linked list. `array[i] = j` means the next node of node i is node j. Then it is trivial to note that the duplicate number is actually the entry point of the cycle. Therefore, this problem is actually equivalent to Problem 142.  
+
+26. Problem 307 (Range Sum Query - Mutable)  
+  Use segment tree to store the sum. When we update an element, we update all related nodes.  
+  *Note: As we are doing node update, lazy update is not applicable*  
+
+27. Problem 310 (Minimum Height Trees)  
+  * There exist <= 2 such roots.  
+  * The leave nodes cannot be the root of MHT.  
+  Solution: delete the leave nodes and corresponding edges repeatedly, until there remains <= 2 nodes.
