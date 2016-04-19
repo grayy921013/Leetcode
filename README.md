@@ -218,4 +218,8 @@
 27. Problem 310 (Minimum Height Trees)  
   * There exist <= 2 such roots.  
   * The leave nodes cannot be the root of MHT.  
-  Solution: delete the leave nodes and corresponding edges repeatedly, until there remains <= 2 nodes.
+  Solution: delete the leave nodes and corresponding edges repeatedly, until there remains <= 2 nodes.  
+
+28. Problem 312 (Burst Balloons)  
+  The naive solution is to try every sequence, which will no doubt result in a TLE.  
+  It is nature to apply Divide & Conquer. If we first cut a sequence `[start, end]` at index i, its value is not equal to `num[i] * num[i - 1] * num[i + 1] + value of [start, i] + value of [i, end]`, because two sub sequences will merge into one after we burst a ballon, which will affect the calculation inside sub sequences. However, if we consider the last cut we make, namely for a sequence `[start, end]`, we at last take a cut at index i, then its value can actually be computed as `num[i] * num[start] * num[end] + value of [start, i] + value of [i, end]`. Therefore, we can apply DP to calculate all sub sequences from shorter sequences to longer ones, and finally will get the answer to the whole sequence.  
