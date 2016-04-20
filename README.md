@@ -223,3 +223,7 @@
 28. Problem 312 (Burst Balloons)  
   The naive solution is to try every sequence, which will no doubt result in a TLE.  
   It is nature to apply Divide & Conquer. If we first cut a sequence `[start, end]` at index i, its value is not equal to `num[i] * num[i - 1] * num[i + 1] + value of [start, i] + value of [i, end]`, because two sub sequences will merge into one after we burst a ballon, which will affect the calculation inside sub sequences. However, if we consider the last cut we make, namely for a sequence `[start, end]`, we at last take a cut at index i, then its value can actually be computed as `num[i] * num[start] * num[end] + value of [start, i] + value of [i, end]`. Therefore, we can apply DP to calculate all sub sequences from shorter sequences to longer ones, and finally will get the answer to the whole sequence.  
+
+29. Problem 315 (Count of Smaller Numbers After Self)  
+  * Sol 1: Loop the array from the tail to the head, while maintaining a sorted list of elements after the current processing item. Then we use binary search to find the proper position to insert the current item into the list, and at the same time get count of smaller number.  
+  * Sol 2: The count of smaller number of a certain item is actually how many items we move from its right to its left during a stable sort. Therefore we use merge sort and at the same time mark the count array. For details, refer to me code.
