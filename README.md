@@ -226,4 +226,7 @@
 
 29. Problem 315 (Count of Smaller Numbers After Self)  
   * Sol 1: Loop the array from the tail to the head, while maintaining a sorted list of elements after the current processing item. Then we use binary search to find the proper position to insert the current item into the list, and at the same time get count of smaller number.  
-  * Sol 2: The count of smaller number of a certain item is actually how many items we move from its right to its left during a stable sort. Therefore we use merge sort and at the same time mark the count array. For details, refer to me code.
+  * Sol 2: The count of smaller number of a certain item is actually how many items we move from its right to its left during a stable sort. Therefore we use merge sort and at the same time mark the count array. For details, refer to me code.  
+
+30. Problem 319 (Bulb Switcher)  
+  Only square numbers have odd numbers of factor.
