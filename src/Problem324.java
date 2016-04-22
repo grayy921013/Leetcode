@@ -1,9 +1,35 @@
-import java.util.Random;
+import java.util.Arrays;
 
 /**
- * Created by Zhehui Zhou on 4/5/16.
+ * Created by Zhehui Zhou on 4/22/16.
  */
-public class Problem215 {
+public class Problem324 {
+    public void wiggleSort(int[] nums) {
+        int median = findKthLargest(nums, (nums.length + 1) / 2);
+        int n = nums.length;
+
+        int left = 0, i = 0, right = n - 1;
+
+        while (i <= right) {
+
+            if (nums[newIndex(i,n)] > median) {
+                swap(nums, newIndex(left++,n), newIndex(i++,n));
+            }
+            else if (nums[newIndex(i,n)] < median) {
+                swap(nums, newIndex(right--,n), newIndex(i,n));
+            }
+            else {
+                i++;
+            }
+        }
+
+
+    }
+
+    private int newIndex(int index, int n) {
+        return (1 + 2*index) % (n | 1);
+    }
+
     public int findKthLargest(int[] nums, int k) {
         //quick select
         return nums[quickSelect(nums, 0, nums.length - 1, k - 1)];
@@ -61,6 +87,8 @@ public class Problem215 {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Problem215().findKthLargest(new int[]{7,6,5,4,3,2,1},5));
+        int[] a = new int[]{1,1,1,2,2,2};
+        new Problem324().wiggleSort(a);
+        System.out.println(Arrays.toString(a));
     }
 }
