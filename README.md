@@ -229,4 +229,20 @@
   * Sol 2: The count of smaller number of a certain item is actually how many items we move from its right to its left during a stable sort. Therefore we use merge sort and at the same time mark the count array. For details, refer to me code.  
 
 30. Problem 319 (Bulb Switcher)  
-  Only square numbers have odd numbers of factor.
+  Only square numbers have odd numbers of factor.  
+
+31. Problem 332 (Reconstruct Itinerary)  
+  * User priority queue to choose the smallest next item  
+  * Use stack to continue when running into an end
+
+32. Problem 334 (Increasing Triplet Subsequence)  
+  The solution is as simple as:  
+  ```java
+  for (int n : nums) {
+            if (n <= small) small = n;
+            else if (n <= big) big = n;
+            else return true;
+  }
+  ```  
+  small = so far best candidate of end element of a one-cell subsequence to form a triplet subsequence  
+  big = so far best candidate of end element of a two-cell subsequence to form a triplet subsequence
